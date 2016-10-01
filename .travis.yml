@@ -4,8 +4,8 @@ node_js:
 
 before_install:
   - git config --global push.default matching
-  - git config --global user.name "magicse7en" 
-  - git config --global user.email "magicse7en@outlook.com"
+  - git config --global user.name "XuBovey" 
+  - git config --global user.email "xu.bovey@xu.boveygmail.com"
 
 install:
   - npm install hexo-cli -g
@@ -38,4 +38,4 @@ cache:
 
 env:
  global:
-   - GH_REF: https://github.com/XuBovey/xubovey.github.io.git
+   - GH_REF: github.com/XuBovey/xubovey.github.io.git
