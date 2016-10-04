@@ -62,9 +62,10 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+
 ## 七牛
-plugins:
-  - hexo-qiniu-sync
+#plugins:
+#  - hexo-qiniu-sync
 #七牛云存储设置
 ##offline       是否离线. 离线状态将使用本地地址渲染
 ##sync          是否同步
@@ -97,6 +98,7 @@ qiniu:
     folder: js
   css:
     folder: css  
+
 ## Themes: https://hexo.io/themes/
 #theme: landscape
 theme: next
