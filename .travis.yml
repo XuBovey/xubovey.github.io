@@ -17,6 +17,7 @@ install:
   - npm install hexo-renderer-stylus --save
   - npm install hexo-renderer-marked --save
   - npm install hexo-renderer-sass --save
+  - npm install hexo-qiniu-sync --save
 
 script:
   - hexo clean
