@@ -141,7 +141,7 @@ social_icons:
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.jpg
 # in site  directory(source/uploads): /uploads/avatar.jpg
-#avatar:
+avatar: http://oefaano2o.bkt.clouddn.com/blogimages/images/x.jpg
 
 
 # Table Of Contents in the Sidebar
