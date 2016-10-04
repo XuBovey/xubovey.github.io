@@ -14,6 +14,8 @@ toc: true
 - [Ruby](http://rubyinstaller.org/downloads/)
 - Travis CI  
 
+<!--more-->
+
 需要注册：
 - github
 
