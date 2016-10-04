@@ -193,8 +193,8 @@ sidebar:
 #   enabled: [true/false] - Replace with specific image
 #   image: url-of-image   - Images's url
 custom_logo:
-  enabled: false
-  image:
+  enabled: true
+  image: http://oefaano2o.bkt.clouddn.com/blogimages/images/01.jpg
 
 
 # Code Highlight theme
