@@ -4,6 +4,7 @@ date: 2016-10-4
 categories: 
 - hexo
 - 七牛
+tags: hexo
 toc: true
 ---
 
