@@ -6,12 +6,12 @@
 favicon: favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "hexo, next, life, skill"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss: false
+rss: 
 
 # Specify the date when the site was setup
 since: 2016
@@ -33,7 +33,8 @@ menu:
   about: /about
   archives: /archives
   tags: /tags
-  #commonweal: /404.html
+  search: /search
+  commonweal: /404.html
 
 
 # Enable/Disable menu icons.
@@ -49,7 +50,7 @@ menu_icons:
   categories: th
   tags: tags
   archives: archive
-  #commonweal: heartbeat
+  commonweal: heartbeat
 
 
 
@@ -156,7 +157,7 @@ toc:
 # Creative Commons 4.0 International License.
 # http://creativecommons.org/
 # Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
-#creative_commons: by-nc-sa
+creative_commons: by-nc-sa
 #creative_commons:
 
 
@@ -231,7 +232,7 @@ auto_excerpt:
 
 # MathJax Support
 mathjax:
-  enable: false
+  enable: true
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 
