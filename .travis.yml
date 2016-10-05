@@ -23,6 +23,7 @@ before_script:
 script:
 #  - hexo clean
   - hexo generate
+  - gulp
 
 after_success:
   - cd ./public
