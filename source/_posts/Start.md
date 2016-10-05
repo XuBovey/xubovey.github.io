@@ -1,7 +1,10 @@
 ---
 title: 启程
 date: 2016-10-2
-categories: hexo
+categories: 
+- 技术
+tags: 
+- hexo
 toc: true
 ---
 

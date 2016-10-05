@@ -1,7 +1,10 @@
 ---
 title: 开始-用hexo+Travis部署独立博文
 date: 2016-9-25
-categories: hexo
+categories: 
+- 技术
+tags: 
+- hexo
 toc: true
 ---
 
