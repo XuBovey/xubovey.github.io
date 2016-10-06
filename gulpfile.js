@@ -1,47 +1,33 @@
 var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')();
-
-gulp.task("clean",function() {
-    return gulp.src("./dst/*")
-    .pipe(plugins.clean());
+var minifycss = require('gulp-minify-css');
+var uglify = require('gulp-uglify');
+var htmlmin = require('gulp-htmlmin');
+var htmlclean = require('gulp-htmlclean');
+// 压缩css文件
+gulp.task('minify-css', function() {
+  return gulp.src('./public/**/*.css')
+  .pipe(minifycss())
+  .pipe(gulp.dest('./public'));
 });
-
-gulp.task("css",["clean"],function(){
-    var stream = gulp.src(["public/**/*.css","!public/**/*.min.css"])
-        .pipe(plugins.minifyCss({compatibility: 'ie8'}))
-        .pipe(gulp.dest("./dst/"));
-    return stream;
+// 压缩html文件
+gulp.task('minify-html', function() {
+  return gulp.src('./public/**/*.html')
+  .pipe(htmlclean())
+  .pipe(htmlmin({
+    removeComments: true,
+    minifyJS: true,
+    minifyCSS: true,
+    minifyURLs: true,
+  }))
+  .pipe(gulp.dest('./public'))
 });
-
-gulp.task("js",["clean"],function(){
-    var stream = gulp.src(["public/**/*.js","!public/**/*.min.js"])
-        .pipe(plugins.uglify())
-        .pipe(gulp.dest("./dst/"));
-    return stream;
+// 压缩js文件
+gulp.task('minify-js', function() {
+  return gulp.src('./public/**/*.js')
+  .pipe(uglify())
+  .pipe(gulp.dest('./public'));
 });
-
-gulp.task("html",["clean"],function(){
-    var stream = gulp.src("public/**/*.html")
-        .pipe(plugins.minifyHtml())
-        //.pipe(plugins.rename({suffix: ".gulp"}))
-        .pipe(gulp.dest("./dst/"));
-    return stream;
-});
-
-gulp.task("mv",["html","css","js"],function() {
-    var stream = gulp.src("./dst/*")
-        .pipe(gulp.dest("./public/"));
-        /*.pipe(plugins.shell([
-            "cp -r ./dst/* ./public/"
-        ]));
-        */
-    return stream;
-});
-
-gulp.task("watch",function() {
-    gulp.watch("public/*",["optimise"]);
-});
-
-gulp.task("default",["mv"],function(){
-    console.log("gulp task ok!");
-});
+// 默认任务
+gulp.task('default', [
+  'minify-html','minify-css','minify-js'
+]);
