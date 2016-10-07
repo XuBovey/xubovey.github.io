@@ -107,6 +107,10 @@ qiniu:
 #theme: landscape
 theme: next
 
+# gfm为true时回车被解释为换行
+marked:
+  gfm: false
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
