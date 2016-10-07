@@ -12,6 +12,7 @@ menu:
   tags: 标签
   about: 关于
   search: 搜索
+  book: 读书
   commonweal: 公益404
 
 
@@ -33,7 +34,7 @@ page:
   tags: 标签
 
 footer:
-  powered: "由 %s 强力驱动"
+  powered: "提供 - %s"
   theme: 主题
 
 
