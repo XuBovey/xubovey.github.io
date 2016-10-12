@@ -55,4 +55,13 @@ make TARGET=srf06-cc26xx hello-world
 Actions选型中保留默认配置，单击`Play`按钮,即可完成下载。
 
 打开串口终端，选择与开发板串口对应的串口-打开。然后按下开发板复位键，即可在终端上看到打印信息。
-
+```
+【2016-10-12 16:31:41:028】Starting Contiki-3.x-2881-g3f4436b
+With DriverLib v0.46593
+TI SmartRF06EB + CC26xx EM
+ Net: sicslowpan
+ MAC: CSMA
+ RDC: ContikiMAC, Channel Check Interval: 16 ticks
+ RF: Channel 25
+ Node ID: 15107
+```
