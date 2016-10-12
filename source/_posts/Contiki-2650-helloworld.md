@@ -44,7 +44,7 @@ ubuntu系统中，终端界面下打开contiki->example->hello-world。
 分布执行以下命令：
 ```
 make clean
-make TARGET=srf06-cc26xx hello-world
+make TARGET=srf06-cc26xx BOARD=srf06/cc26xx
 ```
 在hello-world文件加下可以得到编译处的hex，bin文件。
 ## 下载
