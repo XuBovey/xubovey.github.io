@@ -2,7 +2,7 @@
 title: Makefile入门
 toc: true
 date: 2016-10-14 14:06:19
-categories: C语言, 技术
+categories: C语言
 tags: Makefile. C
 ---
 

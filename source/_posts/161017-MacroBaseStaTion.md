@@ -2,7 +2,7 @@
 title: C语言宏定义的使用
 toc: true
 date: 2016-10-17 10:59:56
-categories: 技术, C语言
+categories: C语言
 tags: C
 ---
 
