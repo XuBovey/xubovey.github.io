@@ -109,5 +109,5 @@ TYPE2(int, d); //转换为：int 　d_int_type ;
 ```
 
 参考：
-[C语言宏高级用法 [总结]](http://www.cnblogs.com/Anker/p/3418792.html)
+[C语言宏高级用法 [总结]](http://www.cnblogs.com/Anker/p/3418792.html)  
 [C语言宏的特殊用法和几个坑](http://hbprotoss.github.io/posts/cyu-yan-hong-de-te-shu-yong-fa-he-ji-ge-keng.html)
