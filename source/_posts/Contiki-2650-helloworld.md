@@ -1,5 +1,5 @@
 ---
-title: ContikiCC2650HelloWorld
+title: Contiki CC2650 HelloWorld
 toc: true
 date: 2016-10-12 16:33:14
 categories: Contiki, 技术
