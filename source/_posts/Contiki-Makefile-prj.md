@@ -12,6 +12,7 @@ tags: Contiki, Makefile
 | 版本   | 信息描述                       | 更新日期  |  
 | :---- | :----------------------------- | :------- |  
 | V0.1  | 初稿                           | 16-10-14 |  
+| V0.2  | 修复发现错误，增加参考章节       | 12-10-17 |
 
 本篇同样从Makefile入手，了解示例工程中的Makefile的区别和平台上Makefile文件的移植自定义方法。文中有误之处迭代更新吧。
 
@@ -19,12 +20,12 @@ tags: Contiki, Makefile
 
 # Makefile
 > 其实Makefile种类一说，这个是我自己创的—-其实它们都是makefile文件了。Contiki OS一共分为5类makefile文件：
-> * Makefile
-> * Makefile.include
-> * Makefile.\$(TARGET)
-> * Makefile.\$(CPU)
-> * Makefile.\$(APP)
-其中第一个“Makefile”，我称之为Makefile-prj，因为它与实际工程有关，并且位于项目工厂目录。
+> * Makefile 位于工程目录下，文件中包含Makefile.include
+> * Makefile.include 执行make命令的时候会展开Makefile.include,其中根据make命令的参数判断TARGET是什么，不指定则采用默认值，选择完后会展开Makefile.\$(TARGET)。
+> * Makefile.\$(TARGET) 这个target其实就是指定用的开发平台是什么，再简单点说就是哪个开发板，其中会包含有哪些外设资源的。同时也会设定使用的处理器是什么Makefile.\$(CPU)，相同处理器的可以有不同的开发板，所以target与CPU就分开了。
+> * Makefile.\$(CPU) CPU会指定采用什么样的编译器，会包含一些底层的东西。
+> * Makefile.\$(APP) APP是Makefile.include中指定的，这些app由contiki提供，当然了，也可以用户自定定义的。就像操作系统上的应用程序一样。  
+其中第一个“Makefile”，我称之为Makefile-prj，因为它与实际工程有关，并且位于项目工程目录下。更详细的介绍可参见./contiki/doc/build-system.txt。
 
 # Makefile-prj
 以helloworld和CC26XX两个例程为例，比较Makefile的区别。  
@@ -116,5 +117,8 @@ include $(CONTIKI)/Makefile.include
 嗯，看样子就是一些配置了。至于怎么配置暂时还不能很自如的说明。  
 但是除了project_conf.h文件，就是CONTIKI_PROJECT变量的配置了。
 这个变量很简单，就是Makefile所在文件夹，当前文件夹中有几个*.c文件全部写在后面就可以了。  
-貌似没什么干货，不过算是简单的真理了。
+貌似没什么干货，不过算是简单的整理了。
 
+# 参考
+[contiki makefile框架分析 < contiki学习之一 >](http://www.cnblogs.com/chineseboy/p/3844981.html)  
+[build-system.txt](https://github.com/contiki-os/contiki/blob/master/doc/build-system.txt) 
