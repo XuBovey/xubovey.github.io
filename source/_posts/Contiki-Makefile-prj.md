@@ -2,7 +2,7 @@
 title: Contiki_Makefile-prj
 toc: true
 date: 2016-10-14 13:18:26
-categories:
+categories: Contiki, 技术
 tags: Contiki, Makefile
 ---
 

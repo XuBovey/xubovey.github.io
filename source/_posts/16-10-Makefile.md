@@ -2,8 +2,8 @@
 title: Makefile入门
 toc: true
 date: 2016-10-14 14:06:19
-categories:
-tags: Makefile
+categories: C语言, 技术
+tags: Makefile. C
 ---
 
 在写Contiki_Makefile-prj的时候，想到可能有的人一点都不了解Makefile,所以写此文以供入门。
