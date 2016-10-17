@@ -15,6 +15,8 @@ tags: Contiki, CC2650
 * 下载最新版contiki系统源文件；
 * 下载CC26xx系列固件。
 
+<!--more-->
+
 ### VMware安装
 自行百度完成。
 

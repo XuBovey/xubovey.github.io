@@ -6,10 +6,6 @@ categories:
 tags: Makefile
 ---
 
-| 版本   | 信息描述                       | 更新日期  |
-| :---- | :----------------------------- | :------- |
-| V0.1  | 初稿                           | 16-10-17 |
-
 在写Contiki_Makefile-prj的时候，想到可能有的人一点都不了解Makefile,所以写此文以供入门。
 
 <!--more-->
@@ -74,9 +70,6 @@ FromELF: creating hex file...
 ## GCC工具安装
 安装完成后，windows下`win+R`打开终端命令行，输入`make -v`，查看版本信息：
 ```
-Microsoft Windows [版本 10.0.14393]
-(c) 2016 Microsoft Corporation。保留所有权利。
-
 C:\Users\Administrator>make -v
 GNU Make 3.81
 Copyright (C) 2006  Free Software Foundation, Inc.
