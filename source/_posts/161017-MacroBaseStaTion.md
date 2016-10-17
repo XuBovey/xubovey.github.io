@@ -2,8 +2,11 @@
 title: C语言宏定义的使用
 toc: true
 date: 2016-10-17 10:59:56
-categories: C语言
-tags: C
+categories: 
+- C语言
+- 技术
+tags: 
+- C
 ---
 
 最近研究Contiki，看别人教程上分析宏定义，一层又一层，所以给自己充个电。

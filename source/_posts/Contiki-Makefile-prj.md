@@ -2,8 +2,11 @@
 title: Contiki_Makefile-prj
 toc: true
 date: 2016-10-14 13:18:26
-categories: Contiki
-tags: Contiki, Makefile
+categories: 
+- Contiki
+tags: 
+- Contiki
+- Makefile
 ---
 
 参考：[鱼竿的传说](http://www.cnblogs.com/chineseboy/archive/2014/07.html)

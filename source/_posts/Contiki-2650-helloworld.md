@@ -2,8 +2,11 @@
 title: Contiki CC2650 HelloWorld
 toc: true
 date: 2016-10-12 16:33:14
-categories: Contiki
-tags: Contiki, CC2650
+categories: 
+- Contiki
+tags: 
+- Contiki
+- CC2650
 ---
 
 
