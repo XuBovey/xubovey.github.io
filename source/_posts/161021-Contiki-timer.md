@@ -19,6 +19,8 @@ Contiki有5种定时器：
 * ctimer: callback timers，回调定时器，定期执行进程回调函数，和etimer一样可被用于等待系统稳定和进入低功耗模式；但是更实用的是用在协议栈之类的非进程函数中。
 * rtimer: real-time timers，实时时钟定时器，用于实时任务的调度，rtimer优先级高于其它任何进程,以保证实时任务被及时调用。
 
+本文参考Contiki的[Timers](https://github.com/contiki-os/contiki/wiki/Timers)
+
 <!--more-->
 # 1. clock  
 clock是需要不同平台(platform)中提供的，Clock Module提供如下API:
@@ -162,4 +164,4 @@ etimer_process进程做了两件事：
 那么etimer_process进程什么时候被添加到进程链表，又什么时候开始执行了呢？  
 答案是在main函数中有`process_start(&etimer_process, NULL);`语句完成了将etimer_process进程添加到process_list中。
 
-为了不太长，ctimer和rtimer单独做
+为了不太长，ctimer和rtimer单独一篇。
