@@ -1,12 +1,12 @@
 ---
-title: Contiki进程分析-struct process
+title: Contiki进程分析-hello world
 toc: true
 date: 2016-10-20 16:47:34
 categories:
 - Contiki
 tags:
 - Contiki
-- 进程
+- Process
 ---
 
 Contiki定义了一个链表数据结构`struct process{struct process *next; ...;};` 用来管理进程，所有需要执行的进程都被注册（通过process_starta函数添加）在这个链表上。这个数据结构中包含进程的状态。  
@@ -30,7 +30,7 @@ PROCESS_THREAD(hello_world_process, ev, data)
 ```
 宏展开：
 ``` c
-static char process_thread_hello_world_process(struct pt *process_pt, process_event_t ev, process_data_t data)
+static char process_thread_hello_world_process(struct pt *hello_world_process, process_event_t ev, process_data_t data)
 {
     char PT_YIELD_FLAG = 1;
 
