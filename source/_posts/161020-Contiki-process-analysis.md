@@ -115,4 +115,29 @@ PROCESS(hello_world_process, "Hello world process");
   ```
   回想process_thread_hello_world_process进程的返回值就是PT_ENDED，所以helloworld只打印了1次；
 * exit_process: 进程退出，将进程数据结构从process_list中移除；
-* 
+ 
+参考[Contiki 调度内核不完全介绍](https://my.oschina.net/lgl88911/blog/139463)  
+举得这个文章写的很不错，介绍进程、事件、进程调度都很好。
+搬几块砖：
+> process本身是基于event的，当有event触发时一个process才会工作，设置needspoll标志，在无event触发的情况下也要执行process，执行一次process后该标志会被清掉。 
+
+> contiki event默认支持32个event，以数组的形式管理，先进后出，因此有可能会出现最开始发生的event最后处理。对于同步的event，直接调用process的处理。对于异步event，先将event放到event数组内，在以后的调度中处理event。  
+
+Event的结构:
+``` c
+struct event_data {
+  process_event_t ev;
+  process_data_t data;
+  struct process *p;
+};
+
+> p: 事件发向那个process，process为NULL的话就是广播事件。  
+
+> Schedule 调度分为两个步骤，一是处理poll，二是处理event。  
+
+> do_poll() 遍历process list，将其中是poll的process都执行一遍，一次调度执行一次这个动作。  
+
+> do_event() 去除event数组的最末尾的event，并交由对应的process处理，一次调度只能处理一个event。  
+
+> call_processcall_process(struct process *p, process_event_t ev, process_data_t data) process处理event的函数，当一个process处理了event后，将被设置为PROCESS_STATE_CALLED状态，那么下次调度就不会被处理，将CPU时间可以让给其它的process。
+
