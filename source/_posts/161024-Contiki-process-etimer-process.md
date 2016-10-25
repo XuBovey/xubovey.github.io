@@ -32,7 +32,8 @@ PROCESS_THREAD(etimer_process, ev, data)
   PROCESS_END();
 }
 ```
-对代码进行宏展开，代码中注释了重要的分析：
+对代码进行宏展开，代码中注释了重要的分析：  
+第一次执行是在`process_start`函数中的`process_post_synch(p, PROCESS_EVENT_INIT, data);`语句完成的。
 ``` c
 static char process_thread_etimer_process(struct pt *etimer_process, process_event_t ev, process_data_t data)
 {
