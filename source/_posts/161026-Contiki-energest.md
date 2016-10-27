@@ -9,6 +9,7 @@ tags:
 - Energest
 ---
 
+Contiki 的设计目的是在极端低功耗的系统中运行，这些系统甚至可能需要只用一对AA电池能够工作许多年。Contiki 为辅助这些低功耗系统的开发提供了功耗估计和功耗分析机制Energest。  
 代码分析中多次遇到这个活力评估相关的函数，现在来做简单分析。  
 遇到的代码中基本上是这样的：
 ``` c
@@ -102,5 +103,3 @@ if(energest_current_mode[ENERGEST_TYPE_IRQ] != 0)
 
 ```
 这里做的是将RTIMER_NOW得到的时间减去执行ON时存入current_time的时间，并将差值存入total_time中。也就是说这个total_time中存的是某类代码的活跃时间。  
-
-# 4. 在CC26XX的代码中并未使用该功能。
