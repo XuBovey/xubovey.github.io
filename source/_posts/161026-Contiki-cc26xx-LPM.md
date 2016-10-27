@@ -15,6 +15,8 @@ LPM: Low-Power management
 
 WUC: Wake-Up Control；
 AON: Alway ON;
+PRCM: Power and clock management 
+PW: Power Down
 
 lpm的使用分析同样按main函数中的主线进行，不过有了前面的分析，会有一些表面上看不到的思路，例如main函数中没有直接调用，而是在其调用的子函数中有相关代码。实际分析是ieee-mode.c的init函数被main函数经netstack_init函数调用。关系如下：  
 main->netstack_init->init->lpm_register_module(&cc26xx_rf_lpm_module);
@@ -160,6 +162,145 @@ lpm_drop()
 那么lpm_sleep和deep_sleep的区别呢：
 
 # 4. lmp_sleep
+函数体挺简单的：
+``` c
+void
+lpm_sleep(void)
+{
+  ENERGEST_SWITCH(ENERGEST_TYPE_CPU, ENERGEST_TYPE_LPM);
+
+  /* We are only interested in IRQ energest while idle or in LPM */
+  ENERGEST_IRQ_RESTORE(irq_energest);
+
+  /* Just to be on the safe side, explicitly disable Deep Sleep */
+  HWREG(NVIC_SYS_CTRL) &= ~(NVIC_SYS_CTRL_SLEEPDEEP);
+
+  ti_lib_prcm_sleep();
+
+  /* Remember IRQ energest for next pass */
+  ENERGEST_IRQ_SAVE(irq_energest);
+
+  ENERGEST_SWITCH(ENERGEST_TYPE_LPM, ENERGEST_TYPE_CPU);
+}
+```
+## 4.1 sleep之前之后
+这里又出现了ENERGEST_SWITCH，先来看看执行sleep之前和之后都做了什么吧。展开宏得到：
+``` c
+//ERGEST_SWITCH(ENERGEST_TYPE_CPU, ENERGEST_TYPE_LPM); 宏展开
+//#define ENERGEST_SWITCH(type_off, type_on) 
+do { 
+  rtimer_clock_t energest_local_variable_now = RTIMER_NOW();
+
+  if(energest_current_mode[ENERGEST_TYPE_CPU] != 0) { 
+    if (energest_local_variable_now < energest_current_time[ENERGEST_TYPE_CPU]) { 
+      energest_total_time[ENERGEST_TYPE_CPU].current += RTIMER_ARCH_SECOND; 
+    }
+    energest_total_time[ENERGEST_TYPE_CPU].current += (rtimer_clock_t)(
+                          energest_local_variable_now 
+                        - energest_current_time[ENERGEST_TYPE_CPU]); 
+    energest_current_mode[ENERGEST_TYPE_CPU] = 0; 
+  } 
+  energest_current_time[ENERGEST_TYPE_LPM] = energest_local_variable_now; 
+  energest_current_mode[ENERGEST_TYPE_LPM] = 1; 
+  } while(0)
+```
+该代码段处理的是energest_total_time[].current,energest_current_mode,energest_current_time之间的事情。首先将当前时间保持在*_now变量中；然后看需要关闭的*_mode[type_off]是否为0，如果不为零对其total_time处理后进行置零；最后赋值需要打开的[type_on]的*_time[type_on]和*_mode[type_on]变量。  
+此处的时间处理，是将CPU启动到关闭运行的时间保存到其total_time变量中。那么这个ENERGEST_SWITCH做的事情就是切换正在执行的类型，记录被关闭的类型的允许时间，并将当前时间保持到要切换的新类型中。
+
+ENERGEST_IRQ_*宏是在lpm.c函数中定义的，RESTORE调用的是`energest_type_set(ENERGEST_TYPE_IRQ, a);`函数，SAVE调用的是`a = energest_type_time(ENERGEST_TYPE_IRQ);`函数。总之就是进行休眠前的变量存储和唤醒后的变量还原。
+
+## 4.2 sleep
+``` c
+ti_lib_prcm_sleep();
+```
+``` c
+#define ti_lib_prcm_sleep(...)        PRCMSleep(__VA_ARGS__)
+```
+这里的PRCM: Power and clock management，而这条语句执行了什么操作呢？继续看
+``` c
+__STATIC_INLINE void
+PRCMSleep(void)
+{
+    // Wait for an interrupt.
+    CPUwfi();
+}
+```
+``` c
+__asm __STATIC_INLINE void
+CPUwfi(void)
+{
+  wfi;
+  bx      lr
+}
+```
+wfi是Wait for interrupt的缩写，这是个ARM的汇编指令，用于让CPU进入idle状态。可参考链接：[ARM WFI和WFE指令](http://www.wowotech.net/armv8a_arch/wfe_wfi.html)了解更多内容。  
+bx lr同样是汇编语句，作用类似于c函数的return。  
+这下就明白了，执行lpm_sleep函数后，最终停在wfi等待中断事件的发生了。当中断发生时退出休眠模式，返回原来的函数继续执行。
 
 # 5. deep_sleep
+需要说明的是deep_sleep或shutdown中被唤醒之后是需要执行wakeup函数的。wakeup做的事情与deep_sleep和shutdown刚好相反。
+
+### 5.1 domains
+在deelp_sleep中首先执行的是各模块的shutdown函数:
+``` c
+  //来自lpm.c
+  #define LOCKABLE_DOMAINS ((uint32_t)(PRCM_DOMAIN_SERIAL | PRCM_DOMAIN_PERIPH))
+  //来自deep_sleep
+  uint32_t domains = LOCKABLE_DOMAINS; //变量用于统计深度休眠下需要保持供电的单元
+  for(module = list_head(modules_list); module != NULL;
+      module = module->next) {
+    if(module->shutdown) {
+      module->shutdown(LPM_MODE_DEEP_SLEEP);
+    }
+    domains &= ~module->domain_lock;
+  }
+  domains &= LOCKABLE_DOMAINS; //保险起见，变量初始化之后再次进行排查LOCKABLE_DOMAINS，保证这里只控制SERIAL和PERIPH。
+  //最后domains中
+```
+这里处理的只有PRCM_DOMAIN_SERIAL和PRCM_DOMAIN_PERIPH，根据实际情况选择是否深度休眠状态下保持供电。  
+函数中的后面有语句：
+``` c
+ti_lib_prcm_power_domain_off(PRCM_DOMAIN_RFCORE | PRCM_DOMAIN_CPU |
+                               PRCM_DOMAIN_VIMS | PRCM_DOMAIN_SYSBUS);
+```
+使其它部分掉电。                               
+
+### 5.2 喂狗
+`watchdog_periodic();`防止唤醒后事情没处理完就发生看门狗中断。
+
+### 5.3 时钟 VIMS等其它部分关闭
+`` c
+  oscillators_switch_to_hf_rc();
+  /* Shut Down the AUX if the user application is not using it */
+  aux_ctrl_power_down(false);
+  /* Configure clock sources for MCU: No clock */
+  ti_lib_aon_wuc_mcu_power_down_config(AONWUC_NO_CLOCK);
+  ti_lib_aon_wuc_jtag_power_off();
+  ti_lib_aon_wuc_domain_power_down_enable();
+  ti_lib_sys_ctrl_set_recharge_before_power_down(XOSC_IN_HIGH_POWER_MODE);
+  ti_lib_prcm_cache_retention_disable();
+  ti_lib_vims_mode_set(VIMS_BASE, VIMS_MODE_OFF);
+```
+代码整理后就是上面这些完成了相关部分的powerdown.
+
+### 5.4 进入深度休眠
+`ti_lib_prcm_deep_sleep();`函数完成。
+最终函数体如下：
+``` c
+void
+PRCMDeepSleep(void)
+{
+    // Enable deep-sleep.
+    HWREG(NVIC_SYS_CTRL) |= NVIC_SYS_CTRL_SLEEPDEEP;
+
+    // Wait for an interrupt.
+    CPUwfi();
+
+    // Disable deep-sleep so that a future sleep will work correctly.
+    HWREG(NVIC_SYS_CTRL) &= ~(NVIC_SYS_CTRL_SLEEPDEEP);
+}
+```
+同样是执行CPUwfi函数进入休眠状态。
+# 6. 小结
+与lmp_sleep不同的是，deep_sleep函数进入休眠之前把许多单元的电源时钟都关闭了，同时退出休眠的时候需要执行wakeup函数进行还原。而lmp_sleep不需要，它从休眠模式退出时直接可以执行原来正在执行的代码，并且各个单元与进入休眠时的状态一致。
 
