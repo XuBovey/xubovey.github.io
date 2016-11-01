@@ -11,7 +11,7 @@ tags:
 
 了解contiki进程调度之前有必要先了解下它的定时器使用。因为作为轮询方式执行的函数，除了外部中断，其他事件中断可触发一些任务外，只有了解了才能明白系统是如何进行任务调度的。
 
-Contiki有5种定时器：
+Contiki有5种定时器：  
 * clock : 用于处理系统时间，是下面集中timer的基础；而这个是需要platform提供的。
 * timer : 以clock的tick为单位进行计时，精度最高；
 * stimer: second timers，秒计时器，比timer计时时间长；timer和stimer库函数可以在中断中调用。
