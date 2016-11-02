@@ -9,7 +9,7 @@ tags:
 - Doxygen
 ---
 
-再也不用担心软件不会写文档了，再也不用担心软件文档写着麻烦了。之前见到过doxygen这个东西，只是没留意，昨天研究Contiki的时候发现了这个[contiki说明](http://dak664.github.io/contiki-doxygen/)，就搜了下原来正式自动文档生成工具。那还不迅速研究下....
+再也不用担心软件写文档麻烦了，再也不用担心软件文档写着麻烦了。之前见到过doxygen这个东西，只是没留意，昨天研究Contiki的时候发现了这个[contiki说明](http://dak664.github.io/contiki-doxygen/)，就搜了下原来正式自动文档生成工具。那还不迅速研究下....
 
 <!--more-->
 首先是这个工具是做什么用的：
@@ -128,7 +128,7 @@ Place to look for global variables, enums, functions and macro definitions.
 ---
 这里其实是doxygen对注释部分进行了解析，得到以上内容。
 
-## 函数调用关系图、UML等  
+# 函数调用关系图、UML等  
 doxygen +  Graphviz  
 参考文件： 
 [用doxygen+graphviz自动化生成代码文档（附详细教程）](http://www.cnblogs.com/tianzhijiexian/p/4392924.html)
