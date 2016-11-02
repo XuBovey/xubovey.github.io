@@ -76,12 +76,7 @@ int var; /**< Detailed description after the member */
 ```
 `*< `注意这里有个空格的。
 
-# 函数调用关系图、UML等  
-doxygen +  Graphviz  
-参考文件： 
-[用doxygen+graphviz自动化生成代码文档](http://www.cnblogs.com/tianzhijiexian/p/4392924.html)
-
-# 标记示例
+## 标记示例
 [转载](https://www.ibm.com/developerworks/cn/aix/library/au-learningdoxygen/)
 
 > 体内描述：类、结构、联合体和名称空间等 C++ 元素都有自己的标记。比如<\class>、<\struct>、<\union> 和 <\namespace>。
@@ -111,7 +106,6 @@ bool check_for_io_errors(FILE* fp);
 ```
 doxygen的输出：
 
----
 **Macros**  
 #define SHIFT(value, length)   ((value) << (length))  
 &emsp;&emsp;&emsp;&emsp; Left shift value by length in bits.
@@ -130,6 +124,10 @@ const int fileSize = 1048576;
 **Detailed Description**  
 Place to look for global variables, enums, functions and macro definitions.
 
----
 这里其实是doxygen对注释部分进行了解析，得到以上内容。
 
+
+# 函数调用关系图、UML等  
+doxygen +  Graphviz  
+参考文件： 
+[用doxygen+graphviz自动化生成代码文档](http://www.cnblogs.com/tianzhijiexian/p/4392924.html)
