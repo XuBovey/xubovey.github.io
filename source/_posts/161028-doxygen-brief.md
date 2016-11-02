@@ -122,12 +122,9 @@ const int fileSize = 1048576;
 &emsp;&emsp;&emsp;&emsp;fp: Pointer to an already opened file
 
 **Detailed Description**  
-Place to look for global variables, enums, functions and macro definitions.
+Place to look for global variables, enums, functions and macro definitions.  
 
 这里其实是doxygen对注释部分进行了解析，得到以上内容。
 
-
 # 函数调用关系图、UML等  
-doxygen +  Graphviz  
-参考文件： 
-[用doxygen+graphviz自动化生成代码文档](http://www.cnblogs.com/tianzhijiexian/p/4392924.html)
+[doxygen +  Graphviz](http://www.cnblogs.com/tianzhijiexian/p/4392924.html)
