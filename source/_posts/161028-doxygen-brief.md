@@ -128,6 +128,7 @@ Place to look for global variables, enums, functions and macro definitions.
 ---
 这里其实是doxygen对注释部分进行了解析，得到以上内容。
 
-## 函数调用关系图、UML等
-doxygen +  Graphviz
+## 函数调用关系图、UML等  
+doxygen +  Graphviz  
+参考文件： 
 [用doxygen+graphviz自动化生成代码文档（附详细教程）](http://www.cnblogs.com/tianzhijiexian/p/4392924.html)
