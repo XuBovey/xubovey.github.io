@@ -106,22 +106,10 @@ bool check_for_io_errors(FILE* fp);
 ```
 doxygen的输出：
 
-**Macros**  
-#define SHIFT(value, length)   ((value) << (length))  
-&emsp;&emsp;&emsp;&emsp; Left shift value by length in bits.
-
-**Functions**  
-bool check_for_io_errors (FILE *fp)  
-&emsp;&emsp;&emsp;&emsp; Checks if a file is corrupted or not.
-
-**Variables**  
-const int fileSize = 1048576;  
-&emsp;&emsp;&emsp;&emsp; Default size of the file on disk.  
-
-**Parameters**  
-&emsp;&emsp;&emsp;&emsp;fp: Pointer to an already opened file
-
-**Detailed Description**  
-Place to look for global variables, enums, functions and macro definitions.  
+![](http://oefaano2o.bkt.clouddn.com/blogimages/images/161102-doxygen-example.jpg)
 
 这里其实是doxygen对注释部分进行了解析，得到以上内容。
+
+# 函数调用关系导出
+[如何使用doxygen+ graphviz](http://www.jianshu.com/p/f67ec1879fca)
+
