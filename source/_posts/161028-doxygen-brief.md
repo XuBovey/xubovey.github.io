@@ -125,6 +125,3 @@ const int fileSize = 1048576;
 Place to look for global variables, enums, functions and macro definitions.  
 
 这里其实是doxygen对注释部分进行了解析，得到以上内容。
-
-# 函数调用关系图  
-[doxygen +  Graphviz](http://www.cnblogs.com/tianzhijiexian/p/4392924.html)
