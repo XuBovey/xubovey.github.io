@@ -106,7 +106,7 @@ bool check_for_io_errors(FILE* fp);
 ```
 doxygen的输出：
 
-![](http://oefaano2o.bkt.clouddn.com/blogimages/images/161102-doxygen-example.jpg)
+![](http://oefaano2o.bkt.clouddn.com/blogimages/images/161102-doxygen-example.jpg-blog)
 
 这里其实是doxygen对注释部分进行了解析，得到以上内容。
 

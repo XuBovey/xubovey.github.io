@@ -107,11 +107,11 @@ netstack_init函数位于contiki/core/net/netstack.c中，函数体并注释展�
 void
 netstack_init(void)
 {
-  NETSTACK_RADIO.init();   //ieee_mode_driver.init();
-  NETSTACK_RDC.init();     //contikimac_driver.init();
-  NETSTACK_LLSEC.init();   //nullsec_driver.init();
-  NETSTACK_MAC.init();     //csma_driver.init();
-  NETSTACK_NETWORK.init(); //rime_driver.init();//IPV6 - sicslowpan_driver
+  NETSTACK_RADIO.init();   // ieee_mode_driver.init();  // 网络的物理层
+  NETSTACK_RDC.init();     // contikimac_driver.init(); // 网络的RDC层
+  NETSTACK_LLSEC.init();   // nullsec_driver.init();    // 网络链路层
+  NETSTACK_MAC.init();     // csma_driver.init();       // MAC层
+  NETSTACK_NETWORK.init(); // rime_driver.init();       // 网络层
 }
 ```
 其中第一个分析如下，其它几个为协议栈上的函数暂不分析，分析协议栈的时候再另起新篇吧。

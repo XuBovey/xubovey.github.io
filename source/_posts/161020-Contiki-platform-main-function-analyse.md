@@ -15,6 +15,7 @@ main函数中主要包含：
 * *_init(); 
 * process*(); 
 * while(1);
+
 <!--more-->
 
 # init 部分
@@ -24,20 +25,25 @@ main函数中主要包含：
   ti_lib_vims_mode_set(VIMS_BASE, VIMS_MODE_ENABLED);
   ti_lib_vims_configure(VIMS_BASE, true, true);
 ```
+
 在vim.h文件中可以找到：
 ```
 #define VIMS_MODE_ENABLED  (VIMS_CTL_MODE_CACHE) // Enabled mode, only USERCODE is cached.
 ```
+
 在hw_vim.h文件中找到：
 ``` c
 #define VIMS_CTL_MODE_CACHE                                         0x00000001
 ```
+
 ## 2. 关中断
 ```
 ti_lib_int_master_disable();
 ```
 在ti-lib.h文件中有：
+``` c
 #define ti_lib_int_master_disable(...)        IntMasterDisable(__VA_ARGS__)
+```
 
 ## 3. 时钟选择
 ```
