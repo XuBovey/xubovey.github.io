@@ -23,7 +23,7 @@ before_script:
   - npm install
 
 script:
-#  - hexo clean
+  - hexo clean
   - hexo generate
   - gulp
 
