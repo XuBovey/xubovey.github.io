@@ -18,3 +18,4 @@ AxeSlide是PPT的良好替代品，跨平台，基于Html5 2D/3D技术开发。�
 # [XMIND](http://www.xmindchina.net/)
 xmind是一个优秀的思维导图工具，带甘特图功能，甘特图能导出到microsoft project工具中。功能十分强大。还可以导出word，pdf，excel格式.有不同风格可以选择。自带的任务管理功能包含干特视图。便捷的任务管理，任务依赖，任务时间调整等等。  
 
+ 
