@@ -214,9 +214,6 @@
           <p><span>文章作者:</span><a href="/" title="访问 {{ theme.author }} 的个人博客">{{ theme.author }}</a></p>
           <p><span>发布时间:</span>{{ page.date.format("YYYY年M月D日 - HH时MM分") }}</p>
           <p><span>最后更新:</span>{{ page.updated.format("YYYY年M月D日 - HH时MM分") }}</p>
-          <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a></p>
-          <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" title="Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)">Attribution-NonCommercial 4.0</a></p>
-          <p><span>转载请保留以上信息。</span></p>
         </div>
       {% endif %}
 
