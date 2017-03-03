@@ -37,4 +37,14 @@ SDK_BASE_DIR       ?= $(abspath ../../../../sdk/$(JENNIC_SDK)/)
 SDK_BASE_DIR       ?= $(abspath ../../../$(JENNIC_SDK)/)
 ```
 
-# end
+## import工程后文件夹为空
+问题：  
+导入`JN-AN-1229.zip`工程时，导入后项目文件夹下只有两个文件`.cproject``.project`。当然也无法编译了，怎么办呢？  
+解决：  
+* 将`JN-AN-1229.zip`解压到`当前`文件夹;
+* 从文件夹中导入工程时，把options->Copy projects into workspace 选项取消；
+* 导入后工程的目录里面显示的链接标志，不过可以编译了。
+
+原因：  
+不知道。
+
