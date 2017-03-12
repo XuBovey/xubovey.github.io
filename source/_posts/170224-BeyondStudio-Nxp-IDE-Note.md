@@ -22,11 +22,13 @@ Step 4 Configure the workspace preferences as follows:
 问题解决。每次新建workspace都需要配置。
 
 ### 有时候执行完上面的操作后仍然有问题
-[LittleBoy's Blog](http://blog.163.com/rainsmell_/blog/static/212827113201431605936633/)找到如下解决办法：
+[LittleBoy's Blog](http://blog.163.com/rainsmell_/blog/static/212827113201431605936633/)找到如下解决办法：  
+``` 
 也不知道这算不算是一个bug，即便是添加了所有object所依赖的head files，include path也完整，依然会出现这个问题。refresh工程，重启Eclipse也无济于事。
 Google了一番,终于在stackoverflow里找到了解决办法：  
 http://stackoverflow.com/questions/10041453/eclipse-c-type-could-not-be-resolved-error-even-though-build-is-successful  
 记录一下，Project -> C/C++ index -> Freshen All Files，问题解决。
+```
 
 ## workspace
 自定义workspace，不能编译问题。  
