@@ -1,5 +1,5 @@
 ---
-title: 170629-markdown table test
+title: Markdown table test
 toc: true
 date: 2017-06-29 13:31:07
 categories:
