@@ -1,5 +1,5 @@
 ---
-title: 170612-Vscode-GBKtoUTF8-bug
+title: Vscode GBKtoUTF8 bug
 toc: true
 date: 2017-06-12 10:54:52
 categories:
