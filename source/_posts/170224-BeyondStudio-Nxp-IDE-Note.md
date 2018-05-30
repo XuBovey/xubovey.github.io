@@ -32,15 +32,14 @@ http://stackoverflow.com/questions/10041453/eclipse-c-type-could-not-be-resolved
 
 ## workspace
 自定义workspace，不能编译问题。  
+原因:  
+`SDK_BASE_DIR`变量没有正确获取SDK路径。abspath函数返回的是当前路径的绝对路径，也就是workspace的绝对路径。
 解决：  
-修改biuld文件夹下的makefile
-```
-SDK_BASE_DIR       ?= $(abspath ../../../../sdk/$(JENNIC_SDK)/)
-```
-为
-```
-SDK_BASE_DIR       ?= $(abspath ../../../$(JENNIC_SDK)/)
-```
+重新安装sdk，安装路径设置为workspace所在路径。例如：  
+1. workspace路径为：d:/workspace/nxp-workspace
+2. 安装路径应设置为：d:/workspace
+
+使用中，先执行clean project，然后再编译
 
 ## import工程后文件夹为空
 问题：  
