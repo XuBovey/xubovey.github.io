@@ -1,5 +1,5 @@
 ---
-title: 170630-changing requirement
+title: 唯一不变的是变化中的需求
 toc: true
 date: 2017-06-30 11:04:38
 categories:
@@ -24,6 +24,7 @@ print("Hello, world")
 print("Hello, world")
 print("Hello, world")
 ```
+<!---more--->
 不过，拷贝粘贴看起来有点低端，你做了一个微小的改动：
 ```
 for(var i = 0; i < 5; i++) {

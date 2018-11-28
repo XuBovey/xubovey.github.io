@@ -20,7 +20,7 @@ Step 4 Configure the workspace preferences as follows:
 * Click Apply and then OK.
 
 问题解决。每次新建workspace都需要配置。
-
+<!---more--->
 ### 有时候执行完上面的操作后仍然有问题
 [LittleBoy's Blog](http://blog.163.com/rainsmell_/blog/static/212827113201431605936633/)找到如下解决办法：  
 ``` 

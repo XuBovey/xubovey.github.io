@@ -23,7 +23,7 @@ APP_COMMON_SRC_DIR  = $(APP_BASE)/Common/Source
 ```
 #SDK_BASE_DIR       ?= $(abspath /C/NXP/bstudio_nxp/sdk/$(JENNIC_SDK)/)
 ```
-
+<!---more--->
 如果只想指向自定义的路径呢？？  
 有点小麻烦...不过还是有办法的！这么修改变量`SDK_BASE_DIR`  
 ```
