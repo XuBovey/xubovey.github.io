@@ -31,6 +31,6 @@ gulp.task('minify-js', function() {
 // gulp.task('default', [
 //   'minify-html','minify-css','minify-js'
 // ]);
-gulp.task('default', gulp.series(
+gulp.task('default', gulp.parallel(
   'minify-html','minify-css','minify-js'
 ));
