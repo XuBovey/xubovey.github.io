@@ -8,7 +8,7 @@ tags:
 
 # 下载
 CodeWarriorV6.3版本为32位版本，需要安装在32位机器或虚拟机上，笔者是装在虚拟机上的。  
-下载地址：[CodeWarriorV6.3]()
+下载地址：[CodeWarriorV6.3](https://pan.baidu.com/s/1KxLyj4M1UdU38vvc_VyKog), 提取码：7um4
 压缩包中包含4给文件分别是：  
 * CW_MCU_V6.3--S08开发软件 - 软件安装包
 * MC9S08AC60.pdf - 芯片手册
