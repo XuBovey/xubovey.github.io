@@ -1,5 +1,5 @@
 ---
-title: 181213-BeyondStudio develop ide
+title: BeyondStudio develop ide
 toc: true
 date: 2018-12-13 09:00:45
 categories:
