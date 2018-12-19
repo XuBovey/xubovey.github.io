@@ -16,7 +16,9 @@ JN516x SDK需要第二步安装，用于支持不同的网络协议。
 [JN-SW-4170](https://pan.baidu.com/s/1jlJWhEkCf0LwhXojVjvERA)
 [JN-SW-4163](https://pan.baidu.com/s/1Mim6SftD87ZuOs38ArzxAg)
 根据手册介绍：  
-1. BeyondStudio for NXP需要先安装: JN-SW-4141
-2. SDK需要后续安装: JN-SW-4170
+1. BeyondStudio for NXP需要先安装: JN-SW-4141  
+2. SDK需要后续安装: JN-SW-4170  
 
+## 工程导入
+[异常处理](https://community.nxp.com/docs/DOC-340028)中的2.Project Directory
 
