@@ -39,11 +39,11 @@ Hermione Granger | Gryffindor | 100
 Draco Malfoy | Slytherin | 90
 ```
 结果如下：  
-Name | Academy | score 
-- | :-: | -: 
-Harry Potter | Gryffindor| 90 
-Hermione Granger | Gryffindor | 100 
-Draco Malfoy | Slytherin | 90
+Name | Academy | score  
+- | :-: | -:  
+Harry Potter | Gryffindor| 90   
+Hermione Granger | Gryffindor | 100   
+Draco Malfoy | Slytherin | 90  
 
 # 教程2 简书教程
 参考[Markdown——入门指南](http://www.jianshu.com/p/1e402922ee32/)
@@ -55,8 +55,8 @@ Draco Malfoy | Slytherin | 90
 | zebra stripes | are neat      |    $1 |
 ```
 结果如下：  
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Tables | Are| Cool  |  
+| -----|:-----:| -----:|  
+| col 3 is|right-aligned|$1600|  
+| col 2 is| centered|$12|  
+| zebra stripes | are neat|$1 |  
