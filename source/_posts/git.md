@@ -1,13 +1,12 @@
 ---
-title: git
+title: git常用操作
 toc: true
 date: 2019-01-18 09:36:10
 categories:
 tags:
 ---
 
-
-## 一个分支pull到另一个分支
+## 常用操作
 
 1. dev分支测试ok后合并到master分支
 ```
@@ -33,12 +32,16 @@ git commit -a -m "Bumped version number to 2.0"
 git push
 ```
 4. release分支合并到master分支同上1
-5. 删除release分支
+5. 删除本地release分支
 ```
 git branch -d release-2.0
 git push
 ```
-6. bug分支，master分支上或其他某分支发现bug，则从当前分支上分出来一个branch
+6. 删除远程release分支
+```
+git push origin --delete release-2.0
+```
+7. bug分支，master分支上或其他某分支发现bug，则从当前分支上分出来一个branch
 ```
 git checkout -b ISSUE-110 master
 // change something
