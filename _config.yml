@@ -109,7 +109,8 @@ theme: next
 
 # gfm为true时回车被解释为换行
 marked:
-  gfm: false
+  gfm: true
+  breaks: false
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
