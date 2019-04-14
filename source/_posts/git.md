@@ -56,3 +56,7 @@ git merge --no-ff ISSUE-110
 git branch -d ISSUE-110
 ```
 
+8. 查看分支关系
+git log --graph --decorate --oneline --simplify-by-decoration --all
+
+
