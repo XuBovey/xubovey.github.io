@@ -12,5 +12,5 @@ tags:
 
 ## allegro局部缩放
 Manufacture->draft->Create detail 局部缩放
-
+ 
 
