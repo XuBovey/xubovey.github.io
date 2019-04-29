@@ -10,6 +10,7 @@ tags:
 选择Place->Poliline，或者快捷键"Y"，启动画多边形命令，默认情况是画直角多边形的，按下shift可画任意角度拐角，这样就可以画三角形了。
 
 
-
+## allegro局部缩放
+Manufacture->draft->Create detail 局部缩放
 
 
