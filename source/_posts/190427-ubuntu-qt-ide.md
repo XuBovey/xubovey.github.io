@@ -14,8 +14,8 @@ tags:
 ```
 sudo apt-get install qt4-dev-tools		//QT资源包
 sudo apt-get install qt4-qtconfig		//配置工具
-sudo apt-get install qt-demos			//官方案例源代码
-sudo apt-get install qtcreator			//IDE
+//sudo apt-get install qt-demos			//官方案例源代码
+//sudo apt-get install qtcreator			//IDE
 ```
 安装过程出现依赖项问题，解决办法：
 ```
@@ -35,6 +35,10 @@ Using Qt version 4.8.7 in /usr/lib/x86_64-linux-gnu
 下载路径：https://pan.baidu.com/s/11WdTVIuiZNdrW1f5QjYAQA
 提取码：9zhv
 2. 安装： sh xx.sh
-3. 配置环境变量，在/opt/poky/1.4.3路径下执行 source enviroment-setup-arm5te-poky-linux-gnuabi
+3. 配置环境变量，在/opt/poky/1.4.3路径下执行 
+```source enviroment-setup-arm5te-poky-linux-gnuabi```
+
+## 
+fatal error: alsa/asoundlib.h: No such file or directory
 
 

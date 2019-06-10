@@ -32,9 +32,14 @@ source .profile
 ## git clone SDK ESP-IDF
 在esp目录下
 ```
-git clone --recuresive http://github.com/espressif/esp-idf.git
+git clone --recursive http://github.com/espressif/esp-idf.git
+git submodule add https://github.com/tuanpmt/espmqtt.git components/espmqtt
 ```
 ...等一会
+如果没有安装git
+```
+sudo apt install git
+```
 
 ## 环境变量
 ```
@@ -59,5 +64,7 @@ make flash monitor
 https://github.com/EspressifApp/ESP-TOUCHForAndroid
 
 
-
+## bug
+1. /esp/esp-idf/components/espmqtt/目录下执行mv mqtt_client.c mqtt_client.c.bak
+2. /esp/esp-idf/components/espmqtt/include目录下执行mv mqtt_client.h mqtt_client.h.bak
 

@@ -86,11 +86,40 @@ aplay -D plughw:0,0 xxx.wav
 
 
 ## ubuntu下rpm包解压缩
-rpm2cpio ../alsa-lib-dev-1.1.0-r0.armv5e.rpm | cpio -idmv
-
+rpm2cpio ../alsa-lib-dev-1.1.0-r0.armv5e.rpm | cpio -idv
+批量使用
+for name in *.rpm; do rpm2cpio $name | cpio -idv; done
 
 ## sh文件安装
 sh xx.sh
+
+## 脚本死循环
+```
+cnt=1;
+while :
+do
+    echo $cnt;
+    let cnt+=1;
+    xxx
+    sleep 3s
+done
+```
+
+## 脚本升级
+```
+```
+
+## 脚本MD5
+```
+sudo rm rootfs.tar.gz
+sudo rm checksum
+sudo find -type f | xargs md5sum >/tmp/checksum
+sudo cp /tmp/checksum checksum
+sudo tar cvzf rootfs.tar.gz *
+sudo chmod -R 777 rootfs.tar.gz
+```
+`md5sum -c checksum`校验结果,其中checksum为校验结果存放位置
+
 
 ## 解压
 .tar 
