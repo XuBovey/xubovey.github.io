@@ -52,9 +52,83 @@ http://stackoverflow.com/questions/10041453/eclipse-c-type-could-not-be-resolved
 原因：  
 暂时不清楚。
 
+后来遇到上述办法不能解决的项目`JN-AN-1217.zip`。经过一番研究最后发现`JN-AN-1217-Zigbee-3-0-Base-Device-v1005\JN-AN-1217-Zigbee-3-0-Base-Device\JN516x`这个目录下有个`.project`文件,文件最后有代码：
+```
+	<linkedResources>
+		<link>
+			<name>Common</name>
+			<type>2</type>
+			<location>C:/NXP/bstudio_nxp/workspace/JN-AN-1217-Zigbee-3-0-Base-Device/Common</location>
+		</link>
+		<link>
+			<name>Coordinator</name>
+			<type>2</type>
+			<location>C:/NXP/bstudio_nxp/workspace/JN-AN-1217-Zigbee-3-0-Base-Device/Coordinator</location>
+		</link>
+		<link>
+			<name>EndDevice</name>
+			<type>2</type>
+			<location>C:/NXP/bstudio_nxp/workspace/JN-AN-1217-Zigbee-3-0-Base-Device/EndDevice</location>
+		</link>
+		<link>
+			<name>Router</name>
+			<type>2</type>
+			<location>C:/NXP/bstudio_nxp/workspace/JN-AN-1217-Zigbee-3-0-Base-Device/Router</location>
+		</link>
+	</linkedResources>
+```
+意思很直白了。那么其他工程是怎么配置的呢
+```
+	<linkedResources>
+		<link>
+			<name>Common</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Common</locationURI>
+		</link>
+		<link>
+			<name>Coordinator</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Coordinator</locationURI>
+		</link>
+		<link>
+			<name>EndDevice</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/EndDevice</locationURI>
+		</link>
+		<link>
+			<name>Router</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Router</locationURI>
+		</link>
+	</linkedResources>
+```
+明白了吧，放到C盘才行，😄。
+
 ## include文件不够
 问题：  
 缺少`C:\NXP\bstudio_nxp\sdk\JN-SW-4170\Components\ZigbeeCommon\Include`
 
 解决： 
 在`项目右键->properties -> general -> paths and symbols -> include` 点击add，添加如上路径即可。
+
+
+## app.zpscfg
+app.zpscfg如何打开呢？其实`JN-UG-3098 Beyond Studio for NXP`文件中已经进行了详细描述。文件的`1.2.3Installing the ZigBee Plug-ins`章节有着详细的描述。需要在eclipse环境下安装2个插件分别是`ZPS Configuration Editor`和`JenOS Configuration Editor`,具体请参考文档[JN-UG-3098](https://www.nxp.com/docs/en/user-guide/JN-UG-3098.pdf)
+
+
+## 不喜欢IDE，如何用命令行进行编译？
+其实demo文档中是有介绍的，以JN-AN-1217-Zigbee-3-0-Base-Device.pdf为例。文件的5.7.2.1介绍的就是用makefile编译的方法。摘抄如下：
+1. Ensure that the project directory is located in
+	<IDE installation root>\workspace
+2. Start an MSYS shell by following the Windows Start menu path: All Programs > NXP > MSYS Shell
+3. Navigate to the Build directory for the application to be built and at the command prompt enter an appropriate make command for your chip type, as illustrated below.
+For example, for JN5169:
+make JENNIC_CHIP_FAMILY=JN516x JENNIC_CHIP=JN5169 clean all
+The binary file will be created in the Build directory, the resulting filename indicating the chip type (e.g. 5169) for which the application was built.
+4. Load the resulting binary file into the board. You can do this from the command line using the JN51xx Production Flash Programmer, as described in Section 4.1.
+
+
+
+
+
+

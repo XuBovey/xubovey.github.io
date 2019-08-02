@@ -101,12 +101,13 @@ do
     echo $cnt;
     let cnt+=1;
     xxx
-    sleep 3s
+    sleep 3
 done
 ```
 
 ## 脚本升级
 ```
+
 ```
 
 ## 脚本MD5
@@ -198,6 +199,72 @@ http://sourceforge.net/projects/sex
 解压后请将sEx拷贝到/usr/bin目录（其他由$PATH环境变量指定的目录也能）： 
 [root@www2 tmp]# cp sEx /usr/bin/ 
 
+
+## arm交叉编译器gnueabi、none-eabi、arm-eabi、gnueabihf、gnueabi区别
+命名规则
+交叉编译工具链的命名规则为：arch [-vendor] [-os] [-(gnu)eabi]
+
+arch – 体系架构，如ARM，MIPS
+vendor – 工具链提供商
+os – 目标操作系统
+eabi – 嵌入式应用二进制接口（Embedded Application Binary Interface）
+根据对操作系统的支持与否，ARM GCC可分为支持和不支持操作系统，如
+
+arm-none-eabi：这个是没有操作系统的，自然不可能支持那些跟操作系统关系密切的函数，比如fork(2)。他使用的是newlib这个专用于嵌入式系统的C库。
+arm-none-linux-eabi：用于Linux的，使用Glibc
+ 
+
+ 实例
+1、arm-none-eabi-gcc
+（ARM architecture，no vendor，not target an operating system，complies with the ARM EABI）
+用于编译 ARM 架构的裸机系统（包括 ARM Linux 的 boot、kernel，不适用编译 Linux 应用 Application），一般适合 ARM7、Cortex-M 和 Cortex-R 内核的使用，所以不支持那些跟操作系统关系密切的函数，比如fork(2)，他使用的是 newlib 这个专用于嵌入式系统的C库。
+
+2、arm-none-linux-gnueabi-gcc
+(ARM architecture, no vendor, creates binaries that run on the Linux operating system, and uses the GNU EABI)
+
+主要用于基于ARM架构的Linux系统，可用于编译 ARM 架构的 u-boot、Linux内核、linux应用等。arm-none-linux-gnueabi基于GCC，使用Glibc库，经过 Codesourcery 公司优化过推出的编译器。arm-none-linux-gnueabi-xxx 交叉编译工具的浮点运算非常优秀。一般ARM9、ARM11、Cortex-A 内核，带有 Linux 操作系统的会用到。
+
+3、arm-eabi-gcc
+Android ARM 编译器。
+
+4、armcc
+ARM 公司推出的编译工具，功能和 arm-none-eabi 类似，可以编译裸机程序（u-boot、kernel），但是不能编译 Linux 应用程序。armcc一般和ARM一起，Keil MDK、ADS、RVDS和DS-5中的编译器都是armcc，所以 armcc 编译器都是收费的（爱国版除外，呵呵~~）。
+
+5、arm-none-uclinuxeabi-gcc 和 arm-none-symbianelf-gcc
+arm-none-uclinuxeabi 用于uCLinux，使用Glibc。
+
+arm-none-symbianelf 用于symbian，没用过，不知道C库是什么 。
+
+
+## 缺少包查找
+* 如果PC上可以执行到板子上不能执行，那么说明板子上的文件系统里缺少某个包，并且板子上一般会提醒缺少哪个包的。
+* 如何在PC上找到对你应的包呢？apt-file search
+    * sudo apt-get install apt-file
+    * sudo apt-file update
+    * apt-file search *.so.1
+    * 例如：apt-file search libjpeg.so.8
+    ```
+    libjpeg-turbo8: /usr/lib/x86_64-linux-gnu/libjpeg.so.8
+    libjpeg-turbo8: /usr/lib/x86_64-linux-gnu/libjpeg.so.8.0.2
+    ```
+    * 右边的是匹配你的库，左边的是你查的库所在的包，所以需要的包是libjpeg-turbo8
+    * 判断库是否能用：objdump -a  *.so，看库是64位的还是32位的，是否与目标板一致
+
+
+## 如何快速下载ubuntu
+由于官网服务器在国外，下载速度奇慢，所以我们可以利用阿里云镜像下载ubuntu 
+ubuntu 14.04： 
+http://mirrors.aliyun.com/ubuntu-releases/14.04/ 
+ubuntu 16.04： 
+http://mirrors.aliyun.com/ubuntu-releases/16.04/ 
+ubuntu 18.04： 
+http://mirrors.aliyun.com/ubuntu-releases/18.04/ 
+没错，只要市面上存在的版本，阿里云镜像基本都有，下载速度可以达到3M/s
+--------------------- 
+作者：Freeman_zxp 
+来源：CSDN 
+原文：https://blog.csdn.net/zpalyq110/article/details/80717790 
+版权声明：本文为博主原创文章，转载请附上博文链接！
 
 
 
