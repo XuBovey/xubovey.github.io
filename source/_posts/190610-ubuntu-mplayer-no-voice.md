@@ -1,5 +1,5 @@
 ---
-title: 190910-ubuntu mplayer no voice
+title: ubuntu mplayer no voice
 toc: true
 date: 2019-06-10 18:28:58
 categories:

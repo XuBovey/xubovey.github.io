@@ -260,11 +260,6 @@ http://mirrors.aliyun.com/ubuntu-releases/16.04/
 ubuntu 18.04： 
 http://mirrors.aliyun.com/ubuntu-releases/18.04/ 
 没错，只要市面上存在的版本，阿里云镜像基本都有，下载速度可以达到3M/s
---------------------- 
-作者：Freeman_zxp 
-来源：CSDN 
-原文：https://blog.csdn.net/zpalyq110/article/details/80717790 
-版权声明：本文为博主原创文章，转载请附上博文链接！
 
 
 
